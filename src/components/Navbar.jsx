@@ -27,7 +27,7 @@ export default function Navbar() {
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button> */}
-        <img src={logo} className="w-[180px]" alt="" />
+        <Link to='/'><img src={logo} className="w-[180px]" alt="" /></Link>
         {/* Logo */}
         <a href="/" className="text-xl font-bold text-gray-800">
           {/* <Button>Sign in</Button> */}

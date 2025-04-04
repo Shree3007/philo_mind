@@ -14,7 +14,7 @@ const HomeCard3 = () => {
      <div className="w-1/2">
              <Card className="w-full">
                <CardHeader>
-                 <CardTitle><img src={roadmap} className="w-1/5" alt="" /><span className="mt-1 text-center">Track Progress</span></CardTitle>
+                 <CardTitle><img src={roadmap} className="w-1/5" alt="" /><span className="mt-1 ">Log Progress</span></CardTitle>
                  {/* <CardDescription>50+ Lessons</CardDescription> */}
                </CardHeader>
              </Card>
