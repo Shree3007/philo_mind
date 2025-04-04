@@ -2,8 +2,8 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import hero1 from '../assets/hero1.png'
 import hero2 from '../assets/heroo2.png'
-import hero3 from '../assets/hero3.jpg'
-import hero4 from '../assets/hero4.jpg'
+import hero3 from '../assets/heroo3.png'
+import hero4 from '../assets/heroo4.png'
 
 const images = [
   hero1,

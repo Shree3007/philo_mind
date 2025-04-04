@@ -2,11 +2,11 @@ const express = require("express");
 const LessonContent = require("../models/lessonContent");
 const LessonCategory= require("../models/lessonCategory");
 const { default: mongoose } = require("mongoose");
-const cors = require("cors"); // Import CORS
+
 
 
 const router=express.Router();
-router.use(cors());
+
 
 //all categories
 router.get("/categories",async(req, res)=>{

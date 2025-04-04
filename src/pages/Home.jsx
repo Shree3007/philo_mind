@@ -15,6 +15,8 @@ import { MdLocalFireDepartment } from "react-icons/md";
 import { GiRank3 } from "react-icons/gi";
 import { useUser, UserButton } from "@clerk/clerk-react";
 import ImageSlider from "@/components/ImageSlider";
+import AfterCard1 from "@/components/AfterCard1";
+import AfterCard2 from "@/components/AfterCard2";
 
 const Home = () => {
   const { isSignedIn, user } = useUser();
@@ -51,6 +53,15 @@ const Home = () => {
         </div>
       </div>
       )}
+      {isSignedIn ? (
+        <div>
+          <div className="w-full flex flex-col gap-5 p-5">
+        <AfterCard1 />
+        <AfterCard2 />
+      </div>
+        </div>
+      ) : (
+        <div>
       <div className="w-full flex flex-row gap-5 p-5">
         <HomeCard1 />
         <HomeCard2 />
@@ -59,6 +70,8 @@ const Home = () => {
         <HomeCard3 />
         <HomeCard4 />
       </div>
+      </div>
+      )}
       <div>
         <Slider />
       </div>

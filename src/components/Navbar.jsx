@@ -33,7 +33,8 @@ export default function Navbar() {
           {/* <Button>Sign in</Button> */}
           {isSignedIn ? (
             <UserButton afterSignOutUrl="/" appearance={{
-              elements: { avatarBox: "w-9 h-9" } // Increased size
+              elements: { avatarBox: "w-9 h-9" },
+              
             }} /> // Shows Gmail Avatar
           ) : (
             <Button asChild>
