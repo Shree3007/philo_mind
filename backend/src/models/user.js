@@ -34,8 +34,12 @@ const GamificationSchema= new mongoose.Schema({
 const UserSchema = new mongoose.Schema({
     clerkUserId:{
         type:String,
-        require:true,
+        // require:true,
         unique:true
+    },
+    email:{
+        type:String,
+        // require:true
     },
     progress:{
         type:[LessonProgressSchema],

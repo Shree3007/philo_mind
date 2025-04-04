@@ -11,11 +11,11 @@ import book from '../assets/open-book.png';
 
 const AfterCard1 = () => {
   return (
-    <div className="w-1/2">
+    <div className="w-full">
       <Card className="w-full">
         <CardHeader>
-          <CardTitle><img src={book} className="w-1/5" alt="" /><span className="mt-1">50+ Lessons</span></CardTitle>
-          {/* <CardDescription>50+ Lessons</CardDescription> */}
+          <CardTitle className="flex justify-center"><img src={book} className="w-[35px]" alt="" /><span className="mt-2">Philosophical Lessons</span></CardTitle>
+           <CardDescription className="flex flex-col justify-center items-center"><p>Explore Timeless Philospohical Lessons for a</p>  <p>Deeper Understanding of Life </p></CardDescription> 
         </CardHeader>
       </Card>
     </div>

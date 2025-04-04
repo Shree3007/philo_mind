@@ -7,15 +7,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import book from '../assets/open-book.png';
+import bot from '../assets/bot.png';
 
 const AfterCard2 = () => {
   return (
-    <div className="w-1/2">
+    <div className="w-full">
       <Card className="w-full">
-        <CardHeader>
-          <CardTitle><img src={book} className="w-1/5" alt="" /><span className="mt-1">50+ Lessons</span></CardTitle>
-          {/* <CardDescription>50+ Lessons</CardDescription> */}
+        <CardHeader >
+          <CardTitle className="flex justify-center"><img src={bot} className="w-[35px]" alt="" /><span className="mt-2 ">Philomind AI</span></CardTitle>
+           <CardDescription className="flex flex-col justify-center items-center"><p>Personalized Mood Tracking & Timeless Wisdom,</p> Powered by AI</CardDescription> 
         </CardHeader>
       </Card>
     </div>
