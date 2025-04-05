@@ -23,10 +23,15 @@ const Lessons = () => {
   if (!lesson) return <h2>Loading...</h2>;
 
   return (
-    <div>
-      <h2>{lesson.title}</h2>
-      <p><strong>Category:</strong> {lesson.category.name}</p>
-      <p>{lesson.content}</p>
+    <div className="bg-[#F5F1EA] h-screen">
+      <div className="bg-black text-white text-center p-2 text-3xl">
+      {lesson.category.name}
+      </div>
+      <div className="p-4">
+      <h2 className="p-2 text-2xl font-semibold">{lesson.title} :</h2>
+      <p className="p-2 mt-3 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] rounded-lg text-center transition-transform transform hover:scale-105">{lesson.content}</p>
+      </div>
+      
     </div>
   );
 };

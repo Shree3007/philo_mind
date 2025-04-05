@@ -20,7 +20,7 @@ export default function ImageSlider() {
     if (!isHovered) {
       controls.start({
         x: ["0%", "-100%"],
-        transition: { repeat: Infinity, duration: 25, ease: "linear" },
+        transition: { repeat: Infinity, duration: 80, ease: "linear" },
       });
     } else {
       controls.stop();

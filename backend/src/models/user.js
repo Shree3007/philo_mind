@@ -7,9 +7,8 @@ const LessonProgressSchema= new mongoose.Schema({
         ref:'LessonContent'
     },
     status:{
-        type:String,
-        enum:["not-started","in-progress","completed"],
-        default:"not-started"
+        type:Boolean,
+        default: false,
     },
     completedAt:{
         type:Date
@@ -49,6 +48,7 @@ const UserSchema = new mongoose.Schema({
         type:GamificationSchema,
         default:()=>({})
     }
+
 },{timestamps:true});
 
 module.exports = mongoose.model('User', UserSchema);

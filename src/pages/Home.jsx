@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsDiscord } from "react-icons/bs";
 import Title from "@/components/Title";
 import HomeCard1 from "@/components/HomeCard1";
@@ -17,11 +17,33 @@ import { useUser, UserButton } from "@clerk/clerk-react";
 import ImageSlider from "@/components/ImageSlider";
 import AfterCard1 from "@/components/AfterCard1";
 import AfterCard2 from "@/components/AfterCard2";
+import { Link } from "react-router-dom";
+import axios from 'axios'; // Import Axios
 
 const Home = () => {
   const { isSignedIn, user } = useUser();
+
+   useEffect(() => {
+      if (isSignedIn && user) {
+        // Send user ID to backend using Axios
+        axios.post('http://localhost:5000/api/register', {
+          clerkUserId: user.id,
+          email: user.primaryEmailAddress.emailAddress,
+        })
+        .then(response => {
+          // console.log('User registered successfully:', response.data);
+        })
+        .catch(error => {
+          console.error('Error registering user:', error);
+        });
+  
+        // Optional: redirect to homepage
+        // router.push('/');
+      }
+    }, [isSignedIn, user]);
+
   return (
-    <div>
+    <div className="bg-[#F5F1EA]">
       {isSignedIn ? (
         <div
           className=" p-2 bg-primary flex justify-between
@@ -56,8 +78,8 @@ const Home = () => {
       {isSignedIn ? (
         <div>
           <div className="w-full flex flex-col gap-5 p-5">
-        <AfterCard1 />
-        <AfterCard2 />
+        <Link to='/categories'><AfterCard1 /></Link>
+        <Link to='/ai'><AfterCard2 /></Link>
       </div>
         </div>
       ) : (
@@ -66,7 +88,7 @@ const Home = () => {
         <HomeCard1 />
         <HomeCard2 />
       </div>
-      <div className="w-full flex flex-row gap-5 p-5">
+      <div className="w-full flex flex-row gap-5 px-5">
         <HomeCard3 />
         <HomeCard4 />
       </div>

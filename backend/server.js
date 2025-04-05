@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 const connectDB = require('./src/config/db');
 const lessonRoutes = require("./src/routes/lessonRoutes");
 const profileRoutes= require("./src/routes/profileRoutes");
-const registerRoutes=require("./src/routes/registerRoute");
+const registerRoutes=require("./src/routes/registerRoutes");
+const lessonProgress=require("./src/routes/lessonProgress");
 const cors = require("cors")
 
 dotenv.config();
@@ -23,6 +24,8 @@ app.use("/api", lessonRoutes);
 app.use("/api",profileRoutes);
 //connecting registerRoutes.js
 app.use("/api",registerRoutes);
+
+app.use("/api",lessonProgress);
 
 
 app.listen(process.env.PORT || 5000, () => {

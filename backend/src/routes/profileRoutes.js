@@ -11,7 +11,7 @@ router.get("/profile/:clerkUserId",async(req,res)=>{
             return res.status(404).json({message:"User not found"})
         }
 
-        const completedlessons= user.progress.filter(lesson => lesson.status === "completed").length;
+        const completedlessons= user.progress.filter(lesson => lesson.status === true).length;
 
         res.status(200).json({
             clerkUserId:user.clerkUserId,

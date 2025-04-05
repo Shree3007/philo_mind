@@ -2,7 +2,7 @@ import React from 'react'
 import Home from './pages/Home';
 import Lessons from './pages/Lessons';
 import About from './pages/About';
-import Contact from './pages/Contact';
+import Progress from './pages/Progress';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -18,9 +18,9 @@ const App = () => {
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/progress' element={<Progress/>}/>
         <Route path='/lessons/:lessonID' element={<Lessons/>}/>
         <Route path='/about' element={<About/>}/>
-        <Route path='/contact' element={<Contact/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/categories' element={<Categories/>}/>

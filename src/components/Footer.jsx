@@ -1,44 +1,47 @@
 import React from "react";
 import { FaHome, FaBook, FaInfoCircle, FaEnvelope } from "react-icons/fa";
 import { useUser, UserButton } from "@clerk/clerk-react";
+import { Link } from "react-router-dom";
+import { GiProgression } from "react-icons/gi";
 
 export default function Footer() {
   const { isSignedIn } = useUser();
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-white shadow-gray-950 flex justify-around items-center p-4 z-50">
+    <div className="fixed bottom-0 left-0 w-full bg-white shadow-[0_-6px_16px_rgba(0,0,0,0.3)] flex justify-around items-center p-4 z-50"
+>
     {/* Home Icon */}
-    <div className="flex flex-col items-center cursor-pointer">
-      <FaHome className="text-2xl text-gray-700" />
+    <Link to='/'><div className="flex flex-col items-center cursor-pointer">
+      <FaHome className="text-2xl text-black" />
       <p className="text-sm">Home</p>
-    </div>
+    </div></Link>
     {/* Lessons Icon */}
     {isSignedIn ? (
-            <div className="flex flex-col items-center cursor-pointer">
-            <FaBook className="text-2xl text-gray-700" />
+            <Link to='/categories'><div className="flex flex-col items-center cursor-pointer">
+            <FaBook className="text-2xl text-black" />
             <p className="text-sm">Lessons</p>
-          </div>
+          </div></Link>
           ) : (
             ''
           )}
     {/* AI Button */}
     {isSignedIn ? (
-            <div className="bg-blue-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-lg font-bold shadow-lg -mt-10">
+            <Link to= '/ai'><div className="bg-primary text-white w-16 h-16 flex items-center justify-center rounded-full text-xl font-bold shadow-lg -mt-14">
             AI
-          </div>
+          </div></Link>
           ) : (
             ''
           )}
     {/* About Icon */}
-    <div className="flex flex-col items-center cursor-pointer">
-      <FaInfoCircle className="text-2xl text-gray-700" />
+    <Link to='/about'><div className="flex flex-col items-center cursor-pointer">
+      <FaInfoCircle className="text-2xl text-black" />
       <p className="text-sm">About</p>
-    </div>
+    </div></Link>
     {/* Contact Icon */}
     {isSignedIn ? (
-            <div className="flex flex-col items-center cursor-pointer">
-            <FaEnvelope className="text-2xl text-gray-700" />
-            <p className="text-sm">Contact</p>
-          </div>
+            <Link to= '/progress'><div className="flex flex-col items-center cursor-pointer">
+            <GiProgression className="text-2xl text-black" />
+            <p className="text-sm">Progress</p>
+          </div></Link>
           ) : (
             ''
           )}
