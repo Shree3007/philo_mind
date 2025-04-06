@@ -3,9 +3,9 @@ const User = require("../models/user");
 const router = express.Router();
 
 router.patch("/syncLessons",async(req,res)=>{
-    const { clerkUserId, lessonId, status } = req.body;
+    const { clerkUserId, lessonId } = req.body;
       
-    if (!clerkUserId || !lessonId || typeof status !== "boolean") {
+    if (!clerkUserId || !lessonId) {
       return res.status(400).json({ message: "Missing or invalid fields" });
     }
     try{

@@ -32,6 +32,6 @@ app.use("/api",synclessons)
 
 
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 5000, '0.0.0.0', () => {
     console.log(`Server running on PORT ${process.env.PORT}`);
 });

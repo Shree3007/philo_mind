@@ -1,24 +1,30 @@
+import shree from '../assets/shree.jpg'
+import wazid from '../assets/wazid.jpg'
+import sid from '../assets/sid.jpg'
+import sudeep from '../assets/sudeep.jpg'
+
+
 export default function About() {
   const team = [
     {
       name: "Shreyash Chavan",
       role: "Frontend and design",
-      photo: "https://via.placeholder.com/150?text=Nishanth",
+      photo: shree,
     },
     {
       name: "Siddarath Mamadapur",
       role: "Frontend  & Content Strategist",
-      photo: "https://via.placeholder.com/150?text=Naveen",
+      photo: sid,
     },
     {
       name: "Sudeep Pattanshetti",
       role: "UI/UX Designer ",
-      photo: "https://via.placeholder.com/150?text=Sahitya",
+      photo: sudeep,
     },
     {
       name: "Wazid Munavalli",
       role: "Backend Developer & Content Strategist",
-      photo: "https://via.placeholder.com/150?text=Sundar",
+      photo: wazid,
     },
   ];
 

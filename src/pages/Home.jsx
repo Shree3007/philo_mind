@@ -80,7 +80,7 @@ const Home = () => {
           className=" p-2 bg-primary flex justify-between
             text-white"
         >
-          <p>Welcome {user.firstName}</p>
+          <p>Welcome {user.firstName} 😊</p>
           <div className="flex gap-2">
             <div className="flex gap-1">
               <p>{streak}</p>
