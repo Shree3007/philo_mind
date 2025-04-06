@@ -4,7 +4,7 @@ const Register = () => {
 
 
   return (
-     <div className='flex justify-center m-3'>
+     <div className='pt-[100px] pb-[120px] flex justify-center m-3'>
           <SignUp signInUrl='/login'/>
     </div>
   )

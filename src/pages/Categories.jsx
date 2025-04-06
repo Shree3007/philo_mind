@@ -34,7 +34,7 @@ export default function Categories() {
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <div className="min-h-screen bg-[#F5F1EA] p-6">
+    <div className="pt-[100px] pb-[120px] min-h-screen bg-[#F5F1EA] p-6">
       <h2 className="text-3xl font-bold text-center mb-6">Lesson Categories</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {categories.map((category) => (

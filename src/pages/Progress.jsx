@@ -39,7 +39,7 @@ const Progress = () => {
   };
 
   return (
-    <div className="px-8 bg-[#F7F6F3] font-[Outfit] items-center justify-center">
+    <div className=" pt-[50px] pb-[40px] px-8 bg-[#F7F6F3] font-[Outfit] items-center justify-center">
       <div className="py-14">
         <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6 text-center space-y-6">
           <img

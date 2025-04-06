@@ -50,7 +50,7 @@ const CatLessons = () => {
   };
 
   return (
-    <div className="p-4 bg-[#F5F1EA] min-h-screen">
+    <div className="pt-[100px] pb-[120px] p-4 bg-[#F5F1EA] min-h-screen">
       <h2 className="text-3xl mb-4">Lessons:</h2>
       <div
         style={{

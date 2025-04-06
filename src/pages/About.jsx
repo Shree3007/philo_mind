@@ -29,7 +29,7 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F5F1EA] font-[Outfit] text-gray-800 px-6 py-12">
+    <div className="pt-[100px] pb-[120px] min-h-screen bg-[#F5F1EA] font-[Outfit] text-gray-800 px-6 py-12">
       {/* Intro Section */}
       <div className="max-w-5xl mx-auto text-center mb-20">
         <h1 className="text-5xl font-semibold mb-6">About PhiloMind</h1>
@@ -106,8 +106,6 @@ export default function About() {
           </p>
         </div>
       </div>
-      <br />
-      <br />
     </div>
   );
 }

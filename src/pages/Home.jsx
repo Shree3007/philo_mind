@@ -19,6 +19,7 @@ import AfterCard1 from "@/components/AfterCard1";
 import AfterCard2 from "@/components/AfterCard2";
 import { Link } from "react-router-dom";
 import axios from 'axios'; // Import Axios
+import BeforeSlider from "@/components/BeforeSlider";
 
 const Home = () => {
   const { isSignedIn, user } = useUser();
@@ -72,11 +73,11 @@ const Home = () => {
 
 
   return (
-    <div className="bg-[#F5F1EA] pt-[76px]">
+    <div className="bg-[#F5F1EA] pb-[100px]">
       {isSignedIn ? (
         <div
           className=" p-2 bg-primary flex justify-between
-            text-white"
+            text-white pt-[82px]"
         >
           <p>Welcome {user.firstName} 😊</p>
           <div className="flex gap-2">
@@ -91,12 +92,12 @@ const Home = () => {
         ""
       )}
       {isSignedIn ? (
-        <div>
+        <div className="">
           <ImageSlider/>
         </div>
       ) : (
         <div>
-        <div className="flex justify-center">
+        <div className="flex justify-center pt-[69px]">
           <img src={hero} className="w-full" alt="" />
         </div>
         <div className="h-20 flex justify-center bg-[#eee8e7]">
@@ -123,9 +124,16 @@ const Home = () => {
       </div>
       </div>
       )}
-      <div>
+
+{isSignedIn ? (
+        <div>
         <Slider />
       </div>
+      ) : (
+        <div>
+          <BeforeSlider/>
+      </div>
+      )}
       <div className="flex justify-center">
   <div className="w-full flex flex-col items-center justify-center pt-6">
     <p className="text-[15px]">
@@ -156,10 +164,6 @@ const Home = () => {
       <div className="w-full mt-5 text-center py-4 text-gray-400 text-sm">
         © 2025 PhiloMind. All rights reserved.
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
     </div>
   );
 };

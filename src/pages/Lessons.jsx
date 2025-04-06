@@ -23,7 +23,7 @@ const Lessons = () => {
   if (!lesson) return <h2>Loading...</h2>;
 
   return (
-    <div className="bg-[#F5F1EA] min-h-screen">
+    <div className="pt-[75px] pb-[120px] bg-[#F5F1EA] min-h-screen">
       <div className="bg-black text-white text-center p-2 text-3xl">
         {lesson.category.name}
       </div>
