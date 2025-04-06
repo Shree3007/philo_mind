@@ -18,7 +18,7 @@ export default function Categories() {
   useEffect(() => {
     const Lessons = async () => {
       try {
-        const response = await axios.get("http://192.168.1.12:5000/api/categories");
+        const response = await axios.get("http://localhost:5000/api/categories");
         setCategories(response.data);
       } catch (err) {
         setError(err.response ? err.response.data.message : err.message);
