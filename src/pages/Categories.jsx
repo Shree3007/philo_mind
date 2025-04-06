@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link,Navigate } from "react-router-dom";
+import { useUser, RedirectToSignIn } from "@clerk/clerk-react";
 
 export default function Categories() {
+
+  const { isSignedIn } = useUser();
+
+  if (!isSignedIn) {
+    return <Navigate to="/register" />;
+  }
+
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

@@ -1,9 +1,11 @@
-import { useUser } from "@clerk/clerk-react";
+import { useUser, useClerk } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { MdLocalFireDepartment } from "react-icons/md";
 
 const Progress = () => {
   const { user } = useUser();
+  const { signOut } = useClerk();
 
   const [lessonsCompleted, setLessonsCompleted] = useState(null);
   const [streak, setStreak] = useState(null);
@@ -14,7 +16,9 @@ const Progress = () => {
       if (!user?.id) return;
 
       try {
-        const response = await axios.get(`http://localhost:5000/api/profile/${user.id}`);
+        const response = await axios.get(
+          `http://localhost:5000/api/profile/${user.id}`
+        );
         const data = response.data;
 
         setLessonsCompleted(data.progress);
@@ -29,7 +33,9 @@ const Progress = () => {
   }, [user?.id]);
 
   const handleLogout = () => {
-    window.location.href = "/";
+    signOut(() => {
+      window.location.href = "/";
+    });
   };
 
   return (
@@ -42,23 +48,34 @@ const Progress = () => {
             className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-[#f0ece4]"
           />
           <div>
-            <h2 className="text-2xl font-semibold text-[#2B2B2B]">{user?.fullName}</h2>
-            <p className="text-gray-500">{user?.primaryEmailAddress?.emailAddress}</p>
+            <h2 className="text-2xl font-semibold text-[#2B2B2B]">
+              {user?.fullName}
+            </h2>
+            <p className="text-gray-500">
+              {user?.primaryEmailAddress?.emailAddress}
+            </p>
           </div>
 
           <div className="flex justify-around items-center bg-[#F7F6F3] rounded-xl py-4">
             <div>
-              <p className="text-xl font-bold text-[#2B2B2B]">{lessonsCompleted ?? "–"}</p>
+              <p className="text-xl font-bold text-[#2B2B2B]">
+                {lessonsCompleted ?? "–"}
+              </p>
               <p className="text-sm text-gray-500">Lessons</p>
             </div>
-            <div>
-              <p className="text-xl font-bold text-[#2B2B2B]">{streak ?? "–"}</p>
+            <div className="flex flex-col items-center">
+              <div className="flex items-center space-x-1">
+                <p className="text-xl font-bold text-[#2B2B2B]">{streak}</p>
+                <MdLocalFireDepartment className="text-2xl text-orange-400" />
+              </div>
               <p className="text-sm text-gray-500">Streak</p>
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-[#2B2B2B] mb-2">Badges</h3>
+            <h3 className="text-lg font-semibold text-[#2B2B2B] mb-2">
+              Badges
+            </h3>
             {badges.length > 0 ? (
               <div className="flex flex-wrap justify-center gap-2">
                 {badges.map((badge, index) => (
@@ -83,6 +100,9 @@ const Progress = () => {
           </button>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
     </div>
   );
 };

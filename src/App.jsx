@@ -10,6 +10,7 @@ import {Route,Routes} from 'react-router-dom';
 import Register from './pages/Register';
 import Categories from './pages/Categories';
 import CatLessons from './pages/CatLessons';
+import PrivateRoute from "./components/PrivateRoute";
 
 
 const App = () => {
@@ -18,14 +19,15 @@ const App = () => {
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/progress' element={<Progress/>}/>
-        <Route path='/lessons/:lessonID' element={<Lessons/>}/>
-        <Route path='/about' element={<About/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/categories' element={<Categories/>}/>
-        <Route path='/categories/:categoryID' element={<CatLessons/>}/>
+        <Route path='/about' element={<About/>}/>
 
+        
+        <Route path='/progress' element={<PrivateRoute><Progress/></PrivateRoute>}/>
+        <Route path='/lessons/:lessonID' element={<PrivateRoute><Lessons/></PrivateRoute>}/>
+        <Route path='/categories' element={<PrivateRoute><Categories/></PrivateRoute>}/>
+        <Route path='/categories/:categoryID' element={<PrivateRoute><CatLessons/></PrivateRoute>}/>
       </Routes>
       <Footer/>
     </div>
