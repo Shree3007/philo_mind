@@ -43,8 +43,6 @@ const Home = () => {
     }, [isSignedIn, user,[]]);
 
 
-
-
     //Rank,Streak and LessonsCompleted code 
 
 
