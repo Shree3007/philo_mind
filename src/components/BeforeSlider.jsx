@@ -34,7 +34,7 @@ const contentItems = [
   },
 ];
 
-export default function Slider() {
+export default function BeforeSlider() {
   const controls = useAnimation();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -62,7 +62,7 @@ export default function Slider() {
             key={index}
             className="bg-white shadow-lg rounded-lg p-6 text-center min-w-[300px] max-w-[350px]"
           >
-            {/* <h2 className="text-xl font-bold text-black">{item.title}</h2> */}
+            <h2 className="text-xl font-bold text-black">{item.title}</h2>
             <p className="text-gray-600 mt-2">{item.description}</p>
             <p className="mt-4  text-black px-4 py-2 rounded-md">
               - {item.buttonText}

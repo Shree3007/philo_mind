@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { BsDiscord } from "react-icons/bs";
 import Title from "@/components/Title";
 import HomeCard1 from "@/components/HomeCard1";
@@ -40,7 +40,38 @@ const Home = () => {
         // Optional: redirect to homepage
         // router.push('/');
       }
-    }, [isSignedIn, user]);
+    }, [isSignedIn, user,[]]);
+
+
+
+
+    //Rank,Streak and LessonsCompleted code 
+
+
+    const [lessonsCompleted, setLessonsCompleted] = useState(null);
+      const [streak, setStreak] = useState(null);
+      const [badges, setBadges] = useState([]);
+    
+      useEffect(() => {
+        const fetchStats = async () => {
+          if (!user?.id) return;
+    
+          try {
+            const response = await axios.get(`http://localhost:5000/api/profile/${user.id}`);
+            const data = response.data;
+    
+            setLessonsCompleted(data.progress);
+            setStreak(data.streak);
+            setBadges(data.badges);
+          } catch (error) {
+            console.error("Error fetching stats:", error);
+          }
+        };
+    
+        fetchStats();
+      }, [user?.id]);
+
+
 
   return (
     <div className="bg-[#F5F1EA]">
@@ -52,7 +83,7 @@ const Home = () => {
           <p>Welcome {user.firstName}</p>
           <div className="flex gap-2">
             <div className="flex gap-1">
-              <p>10</p>
+              <p>{streak}</p>
               <MdLocalFireDepartment className="text-2xl text-orange-400" />
             </div>
             <GiRank3 className="text-2xl font-extrabold" />
@@ -98,15 +129,22 @@ const Home = () => {
         <Slider />
       </div>
       <div className="flex justify-center">
-        <div className="w-full flex flex-col items-center justify-center pt-6">
-          <p className="text-[15px]">
-            <Title text1={"Join The"} text2={"Community"} />
-          </p>
-          <BsDiscord className="h-[100px] w-[100px]" />
-          <p>Become part of our community</p>
-          <Button className="p-5 mt-5">Join Discord</Button>
-        </div>
-      </div>
+  <div className="w-full flex flex-col items-center justify-center pt-6">
+    <p className="text-[15px]">
+      <Title text1={"Join The"} text2={"Community"} />
+    </p>
+    <BsDiscord className="h-[100px] w-[100px]" />
+    <p>Become part of our community</p>
+    
+    <Button 
+      className="p-5 mt-5"
+      onClick={() => window.open("https://discord.gg/8ZPR57XfcG", "_blank")}
+    >
+      Join Discord
+    </Button>
+  </div>
+</div>
+
       <div className="mt-10 flex flex-col">
         <p className="flex justify-center text-xl font-semibold">
           Stay Connected With Us
