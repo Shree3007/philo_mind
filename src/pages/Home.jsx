@@ -43,8 +43,6 @@ const Home = () => {
     }, [isSignedIn, user,[]]);
 
 
-
-
     //Rank,Streak and LessonsCompleted code 
 
 
@@ -74,7 +72,7 @@ const Home = () => {
 
 
   return (
-    <div className="bg-[#F5F1EA]">
+    <div className="bg-[#F5F1EA] pt-[76px]">
       {isSignedIn ? (
         <div
           className=" p-2 bg-primary flex justify-between

@@ -18,7 +18,7 @@ export default function Navbar() {
   const { isSignedIn } = useUser();
 
   return (
-    <nav className="bg-white p-4 shadow-md">
+    <nav className="fixed right-0 left-0 top-0 z-50 bg-white p-4 shadow-md">
       <div className="container mx-auto flex items-center justify-between">
          {/* Hamburger Button - Visible on Mobile */}
          {/* <button
