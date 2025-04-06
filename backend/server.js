@@ -5,6 +5,7 @@ const lessonRoutes = require("./src/routes/lessonRoutes");
 const profileRoutes= require("./src/routes/profileRoutes");
 const registerRoutes=require("./src/routes/registerRoutes");
 const lessonProgress=require("./src/routes/lessonProgress");
+const synclessons = require("./src/routes/synclessons");
 const cors = require("cors")
 
 dotenv.config();
