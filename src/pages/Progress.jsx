@@ -17,7 +17,7 @@ const Progress = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/profile/${user.id}`
+          `http://192.168.1.12:5000/api/profile/${user.id}`
         );
         const data = response.data;
 

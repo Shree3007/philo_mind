@@ -13,7 +13,7 @@ const AfterCard1 = () => {
         {/* Title + Description */}
         <div>
           <h3 className="text-lg font-semibold text-gray-800">
-            Philosophical Lesson
+            PhiloMind AI
           </h3>
           <p className="text-sm text-gray-500 mt-1">
           AI-Powered Mood Tracking with Timeless Wisdom </p>

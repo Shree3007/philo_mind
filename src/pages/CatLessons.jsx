@@ -15,7 +15,7 @@ const CatLessons = () => {
         if (!user || !user.id) return; // Wait until user is available
 
         const response = await axios.get(
-          `http://localhost:5000/api/lessons/category/${categoryID}?clerkUserId=${user.id}`
+          `http://192.168.1.12:5000/api/lessons/category/${categoryID}?clerkUserId=${user.id}`
         );
         setLessons(response.data);
       } catch (error) {
@@ -30,7 +30,7 @@ const CatLessons = () => {
     const newStatus = !currentStatus;
 
     try {
-      await axios.patch("http://localhost:5000/api/updateStatus", {
+      await axios.patch("http://192.168.1.12:5000/api/updateStatus", {
         clerkUserId: user.id,
         lessonId,
         status: newStatus,
@@ -62,7 +62,7 @@ const CatLessons = () => {
         {lessons.map((lesson) => (
           <div
             key={lesson.lessonId}
-            className="mt-5 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] rounded-lg p-4 text-center transition-transform transform hover:scale-105"
+            className="mt-5 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] rounded-lg p-4  transition-transform transform hover:scale-105"
           >
             <div className="flex items-center justify-between gap-2">
               <h2

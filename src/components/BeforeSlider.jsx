@@ -1,26 +1,28 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const contentItems = [
   {
     title: "AI-Driven Insights",
     description: "Gain wisdom from an intelligent chatbot trained on philosophy",
-    buttonText: "",
+    buttonText: "Explore More",
   },
   {
     title: "Philosophical Lessons",
     description: "Learn timeless philosophical concepts in bite-sized lessons.",
-    buttonText: "",
+    buttonText: "Explore More",
   },
   {
     title: "Track Progress",
     description: "Your journey is saved—resume from where you left off anytime.",
-    buttonText: "",
+    buttonText: "Explore More",
   },
   {
     title: "Earn Badges & Streaks",
     description: "Stay motivated through gamified learning.",
-    buttonText: "",
+    buttonText: "Explore More",
   },
 ];
 
@@ -55,9 +57,9 @@ export default function BeforeSlider() {
           >
             <h2 className="text-xl font-bold text-black">{item.title}</h2>
             <p className="text-gray-600 mt-2">{item.description}</p>
-            {/* <p className="mt-4  text-black px-4 py-2 rounded-md">
-              - {item.buttonText}
-            </p> */}
+             <Link to='/login'><Button className='mt-5'>
+              {item.buttonText}
+            </Button> </Link>
           </div>
         ))}
       </motion.div>

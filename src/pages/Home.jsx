@@ -27,7 +27,7 @@ const Home = () => {
    useEffect(() => {
       if (isSignedIn && user) {
         // Send user ID to backend using Axios
-        axios.post('http://localhost:5000/api/register', {
+        axios.post('http://192.168.1.12:5000/api/register', {
           clerkUserId: user.id,
           email: user.primaryEmailAddress.emailAddress,
         })
@@ -56,7 +56,7 @@ const Home = () => {
           if (!user?.id) return;
     
           try {
-            const response = await axios.get(`http://localhost:5000/api/profile/${user.id}`);
+            const response = await axios.get(`http://192.168.1.12:5000/api/profile/${user.id}`);
             const data = response.data;
     
             setLessonsCompleted(data.progress);
@@ -101,7 +101,7 @@ const Home = () => {
           <img src={hero} className="w-full" alt="" />
         </div>
         <div className="h-20 flex justify-center bg-[#eee8e7]">
-          <Button size="lg">Start Learning</Button>
+        <Link to='/login'> <Button size="lg">Start Learning</Button></Link> 
         </div>
       </div>
       )}
