@@ -10,28 +10,67 @@ import {Route,Routes} from 'react-router-dom';
 import Register from './pages/Register';
 import Categories from './pages/Categories';
 import CatLessons from './pages/CatLessons';
+import Ai from "./pages/Ai";
 import PrivateRoute from "./components/PrivateRoute";
-
+import HospitalList from "./pages/HospitalList";
+import VideoGallery from "./pages/VideoGallery";
 
 const App = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Register/>}/>
-        <Route path='/about' element={<About/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
 
-        
-        <Route path='/progress' element={<PrivateRoute><Progress/></PrivateRoute>}/>
-        <Route path='/lessons/:lessonID' element={<PrivateRoute><Lessons/></PrivateRoute>}/>
-        <Route path='/categories' element={<PrivateRoute><Categories/></PrivateRoute>}/>
-        <Route path='/categories/:categoryID' element={<PrivateRoute><CatLessons/></PrivateRoute>}/>
+        <Route
+          path="/progress"
+          element={
+            <PrivateRoute>
+              <Progress />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/lessons/:lessonID"
+          element={
+            <PrivateRoute>
+              <Lessons />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/categories"
+          element={
+            <PrivateRoute>
+              <Categories />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/ai"
+          element={
+            <PrivateRoute>
+              <Ai />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/hospitalList" element={<HospitalList />} />
+        <Route path="/videoGallery" element={<VideoGallery />} />
+        <Route
+          path="/categories/:categoryID"
+          element={
+            <PrivateRoute>
+              <CatLessons />
+            </PrivateRoute>
+          }
+        />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default App

@@ -5,6 +5,9 @@ const lessonRoutes = require("./src/routes/lessonRoutes");
 const profileRoutes= require("./src/routes/profileRoutes");
 const registerRoutes=require("./src/routes/registerRoutes");
 const lessonProgress=require("./src/routes/lessonProgress");
+const aiRoute = require("./src/routes/aiRoute");
+const psyRoutes= require("./src/routes/psyRoutes");
+const videos = require("./src/routes/videoRoutes");
 const cors = require("cors")
 
 dotenv.config();
@@ -26,6 +29,11 @@ app.use("/api",profileRoutes);
 app.use("/api",registerRoutes);
 //connecting lessonProgress
 app.use("/api",lessonProgress);
+app.use("/api",aiRoute);
+//connecting psyRoutes
+app.use("/api",psyRoutes);
+//videoroute
+app.use("/api",videos)
 
 
 
