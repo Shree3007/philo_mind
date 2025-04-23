@@ -8,6 +8,7 @@ const lessonProgress=require("./src/routes/lessonProgress");
 const aiRoute = require("./src/routes/aiRoute");
 const psyRoutes= require("./src/routes/psyRoutes");
 const videos = require("./src/routes/videoRoutes");
+const moodRoutes = require("./src/routes/moodRoutes");
 const cors = require("cors")
 
 dotenv.config();
@@ -35,7 +36,7 @@ app.use("/api",psyRoutes);
 //videoroute
 app.use("/api",videos)
 
-
+app.use("/api", moodRoutes);
 
 
 app.listen(process.env.PORT || 5000, '0.0.0.0', () => {
