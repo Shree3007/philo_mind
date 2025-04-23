@@ -3,11 +3,13 @@ import axios from "axios";
 
 const HospitalList = () => {
   const [hospitals, setHospitals] = useState([]);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState(""); // Track selected city
+  const [cities, setCities] = useState([]); // Track list of cities
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1); // For pagination
   const [currentPage, setCurrentPage] = useState(1); // Track current page
 
+  // Fetch hospitals with the selected city filter
   const fetchHospitals = async (page = currentPage) => {
     try {
       setLoading(true);
@@ -24,11 +26,31 @@ const HospitalList = () => {
     }
   };
 
+  // Fetch the list of unique cities on component mount
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/psy");
+        // Extract cities from the fetched hospitals and remove duplicates
+        const cityList = [
+          ...new Set(res.data.hospitals.map((hospital) => hospital.city)),
+        ];
+        setCities(cityList); // Set the cities state
+      } catch (error) {
+        console.error("Error fetching cities:", error);
+      }
+    };
+
+    fetchCities();
+  }, []);
+
+  // Fetch hospitals when the city or page changes
   useEffect(() => {
     fetchHospitals(); // Fetch hospitals on mount or when city changes
-  }, [city]);
+  }, [city, currentPage]);
 
   const handlePageChange = (page) => {
+    setCurrentPage(page);
     fetchHospitals(page); // Fetch hospitals for the new page
   };
 
@@ -44,9 +66,12 @@ const HospitalList = () => {
         onChange={(e) => setCity(e.target.value)}
       >
         <option value="">All Cities</option>
-        <option value="Belagavi">Belagavi</option>
-        <option value="Bengaluru">Bengaluru</option>
-        {/* Add more cities as needed */}
+        {/* Dynamically generate city options from the cities state */}
+        {cities.map((cityName) => (
+          <option key={cityName} value={cityName}>
+            {cityName}
+          </option>
+        ))}
       </select>
 
       {loading ? (

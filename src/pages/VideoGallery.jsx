@@ -11,7 +11,9 @@ const VideoGallery = () => {
   const fetchVideos = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`/api/videos?page=${page}`);
+      const res = await axios.get(
+        `http://localhost:5000/api/videos?page=${page}`
+      );
       setVideos(Array.isArray(res.data.videos) ? res.data.videos : []);
       setTotalPages(res.data.totalPages || 1);
     } catch (err) {
@@ -27,7 +29,7 @@ const VideoGallery = () => {
   }, [page]);
 
   return (
-    <div className="min-h-screen bg-[#F5F1EA] font-[Outfit] p-4">
+    <div className="min-h-screen bg-[#F5F1EA] font-[Outfit] p-4 pt-[100px] pb-[100px]">
       <h2 className="text-2xl font-semibold text-center mb-6">
         Philosophy Videos
       </h2>
