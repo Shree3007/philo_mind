@@ -14,7 +14,6 @@ const Progress = () => {
   useEffect(() => {
     const fetchStats = async () => {
       if (!user?.id) return;
-
       try {
         const response = await axios.get(
           `http://localhost:5000/api/profile/${user.id}`
@@ -39,34 +38,37 @@ const Progress = () => {
   };
 
   return (
-    <div className=" pt-[50px] pb-[40px] px-8 bg-[#F7F6F3] font-[Outfit] items-center justify-center">
-      <div className="py-14">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6 text-center space-y-6">
+    <div className="min-h-screen bg-[#F7F6F3]  px-6 font-[Outfit] flex justify-center items-start pt-[110px] pb-[100px]">
+      <div className="w-full max-w-md bg-white shadow-2xl rounded-3xl p-8 animate-fade-in">
+        <div className="text-center space-y-6">
           <img
             src={user?.imageUrl}
             alt="Profile"
-            className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-[#f0ece4]"
+            className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-[#e2dfd6] shadow-md"
           />
+
           <div>
-            <h2 className="text-2xl font-semibold text-[#2B2B2B]">
+            <h2 className="text-2xl font-bold text-[#2B2B2B] tracking-tight">
               {user?.fullName}
             </h2>
-            <p className="text-gray-500">
+            <p className="text-gray-500 text-sm">
               {user?.primaryEmailAddress?.emailAddress}
             </p>
           </div>
 
-          <div className="flex justify-around items-center bg-[#F7F6F3] rounded-xl py-4">
-            <div>
-              <p className="text-xl font-bold text-[#2B2B2B]">
+          <div className="flex justify-between items-center bg-[#F7F6F3] rounded-xl py-4 px-6 border border-[#e6e3da] shadow-inner">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-[#2B2B2B]">
                 {lessonsCompleted ?? "–"}
               </p>
               <p className="text-sm text-gray-500">Lessons</p>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="flex items-center space-x-1">
-                <p className="text-xl font-bold text-[#2B2B2B]">{streak}</p>
-                <MdLocalFireDepartment className="text-2xl text-orange-400" />
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-1">
+                <p className="text-2xl font-bold text-[#2B2B2B]">
+                  {streak ?? "–"}
+                </p>
+                <MdLocalFireDepartment className="text-3xl text-orange-400 animate-pulse" />
               </div>
               <p className="text-sm text-gray-500">Streak</p>
             </div>
@@ -81,28 +83,25 @@ const Progress = () => {
                 {badges.map((badge, index) => (
                   <span
                     key={index}
-                    className="bg-[#E8E6DF] text-sm text-[#2B2B2B] px-3 py-1 rounded-full"
+                    className="bg-[#E8E6DF] text-sm text-[#2B2B2B] px-3 py-1 rounded-full shadow-sm"
                   >
                     {badge}
                   </span>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-gray-500">No badges yet</p>
+              <p className="text-sm text-gray-500 italic">No badges yet</p>
             )}
           </div>
 
           <button
             onClick={handleLogout}
-            className="w-full mt-4 bg-[#2B2B2B] text-white py-2 rounded-xl font-semibold hover:bg-[#1f1f1f] transition"
+            className="w-full mt-6 bg-[#2B2B2B] text-white py-2 rounded-xl font-semibold hover:bg-[#1f1f1f] transition-all shadow-md"
           >
             Logout
           </button>
         </div>
       </div>
-      <br />
-      <br />
-      <br />
     </div>
   );
 };

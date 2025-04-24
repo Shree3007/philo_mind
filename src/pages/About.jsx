@@ -1,24 +1,23 @@
-import shree from '../assets/shree.jpg'
-import wazid from '../assets/wazid.jpg'
-import sid from '../assets/sid.jpg'
-import sudeep from '../assets/sudeep.jpg'
-
+import shree from "../assets/shree.jpg";
+import wazid from "../assets/wazid.jpg";
+import sid from "../assets/sid.jpg";
+import sudeep from "../assets/sudeep.jpg";
 
 export default function About() {
   const team = [
     {
       name: "Shreyash Chavan",
-      role: "Frontend and design",
+      role: "Frontend and Design",
       photo: shree,
     },
     {
       name: "Siddarath Mamadapur",
-      role: "Frontend  & Content Strategist",
+      role: "Frontend & Content Strategist",
       photo: sid,
     },
     {
       name: "Sudeep Pattanshetti",
-      role: "UI/UX Designer ",
+      role: "UI/UX Designer",
       photo: sudeep,
     },
     {
@@ -29,30 +28,34 @@ export default function About() {
   ];
 
   return (
-    <div className="pt-[100px] pb-[120px] min-h-screen bg-[#F5F1EA] font-[Outfit] text-gray-800 px-6 py-12">
-      {/* Intro Section */}
+    <div className="min-h-screen bg-[#F5F1EA] pt-24 pb-28 px-6 font-[Outfit] text-gray-800">
+      {/* Intro */}
       <div className="max-w-5xl mx-auto text-center mb-20">
-        <h1 className="text-5xl font-semibold mb-6">About PhiloMind</h1>
-        <p className="text-lg leading-relaxed max-w-2xl mx-auto">
+        <h1 className="text-5xl font-bold mb-4">About PhiloMind</h1>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
           A space for emotional reflection and thoughtful awareness. We combine
           philosophy and psychology to help people explore their inner worlds,
           mindfully.
         </p>
       </div>
 
-      {/* Philosophy and Mission */}
+      {/* Philosophy & Mission */}
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 mb-24">
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Our Philosophy</h2>
-          <p className="text-base leading-relaxed text-gray-700">
-            PhiloMind was built with the belief that self-awareness is not just
+        <div className="bg-white p-8 rounded-2xl shadow-md">
+          <h2 className="text-2xl font-semibold mb-4 text-[#2B2B2B]">
+            Our Philosophy
+          </h2>
+          <p className="text-base text-gray-600 leading-relaxed">
+            PhiloMind was built on the belief that self-awareness is not just
             emotional but also philosophical. We invite users to slow down,
             observe, and articulate what they feel with clarity and depth.
           </p>
         </div>
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-          <p className="text-base leading-relaxed text-gray-700">
+        <div className="bg-white p-8 rounded-2xl shadow-md">
+          <h2 className="text-2xl font-semibold mb-4 text-[#2B2B2B]">
+            Our Mission
+          </h2>
+          <p className="text-base text-gray-600 leading-relaxed">
             To offer a clean, thoughtful space where users can reflect, grow,
             and gain perspective. We believe in design that supports
             introspection — gentle, intuitive, and calming.
@@ -62,19 +65,21 @@ export default function About() {
 
       {/* Team Section */}
       <div className="max-w-6xl mx-auto text-center mb-24">
-        <h2 className="text-3xl font-semibold mb-12">Meet the Team</h2>
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <h2 className="text-3xl font-semibold mb-10">Meet the Team</h2>
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition duration-300"
+              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
             >
               <img
                 src={member.photo}
                 alt={member.name}
-                className="w-24 h-24 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-md"
+                className="w-24 h-24 mx-auto rounded-full object-cover mb-4 border-4 border-[#f0ece4] shadow-md"
               />
-              <div className="text-xl font-medium">{member.name}</div>
+              <div className="text-xl font-medium text-[#2B2B2B]">
+                {member.name}
+              </div>
               <div className="text-sm text-gray-600">{member.role}</div>
             </div>
           ))}
@@ -82,14 +87,14 @@ export default function About() {
       </div>
 
       {/* Contact Section */}
-      <div className="max-w-4xl mx-auto text-center bg-white p-10 rounded-2xl shadow-lg">
+      <div className="max-w-4xl mx-auto text-center bg-white p-10 rounded-2xl shadow-xl">
         <h2 className="text-3xl font-semibold mb-4">Contact Us</h2>
         <p className="text-base text-gray-600 mb-6">
-          We'd love to hear from you — whether it's feedback, collaboration, or
-          questions about PhiloMind. Reach out to us anytime.
+          We'd love to hear from you — whether it’s feedback, collaboration, or
+          questions about PhiloMind.
         </p>
-        <div className="space-y-2 text-gray-700 text-lg">
-          <p className="w-full">
+        <div className="space-y-3 text-gray-700 text-lg">
+          <p>
             📧 <span className="font-medium">Email:</span>{" "}
             <a
               href="mailto:philomind.contact@gmail.com"

@@ -6,7 +6,7 @@ import { MdLocalFireDepartment } from "react-icons/md";
 import { GiRank3 } from "react-icons/gi";
 import { useUser } from "@clerk/clerk-react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,7 @@ import AfterCard1 from "@/components/AfterCard1";
 import AfterCard2 from "@/components/AfterCard2";
 import Slider from "@/components/Slider";
 import BeforeSlider from "@/components/BeforeSlider";
-import MoodQuiz from "@/components/MoodQuiz";
+
 import hero from "../assets/hero-img.jpeg";
 
 const Home = () => {
@@ -102,12 +102,14 @@ const Home = () => {
 
       {/* Floating Action Button */}
       {isSignedIn && (
-        <button
-          onClick={() => setShowModal(true)}
-          className="pb-[100px] fixed bottom-6 right-6 bg-black text-white text-2xl rounded-full p-4 shadow-lg hover:bg-gray-800 transition"
-        >
-          🧠
-        </button>
+        <Link to="/moodquiz">
+          <button
+            onClick={() => setShowModal(true)}
+            className="pb-[100px] fixed bottom-6 right-6 bg-black text-white text-2xl rounded-full p-4 shadow-lg hover:bg-gray-800 transition"
+          >
+            🧠
+          </button>
+        </Link>
       )}
 
       {/* Animated Modal */}
