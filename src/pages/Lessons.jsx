@@ -20,24 +20,36 @@ const Lessons = () => {
     fetchLesson();
   }, [lessonID]);
 
-  if (!lesson) return <h2>Loading...</h2>;
+  if (!lesson)
+    return <div className="text-center mt-40 text-lg">Loading...</div>;
 
   return (
-    <div className="pt-[75px] pb-[120px] bg-[#F5F1EA] min-h-screen">
-      <div className="bg-black text-white text-center p-2 text-3xl">
-        {lesson.category.name}
+    <div className="bg-[#F5F1EA] min-h-screen pt-20 pb-32 font-[Outfit]">
+      {/* Category Header */}
+      <div className="bg-[#1F1F1F] text-white py-3 text-center shadow-md">
+        <h1 className="text-2xl font-bold tracking-wide">
+          {lesson.category.name}
+        </h1>
       </div>
-      <div className="p-4">
-        <h2 className="p-2 text-2xl font-semibold">{lesson.title} :</h2>
 
-        {/* Bullet point list */}
-        <ul className="p-4 mt-3 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] rounded-lg list-disc list-inside space-y-2 transition-transform transform hover:scale-105">
-          {lesson.content.map((point, index) => (
-            <li key={index} className="text-gray-800">
-              {point}
-            </li>
-          ))}
-        </ul>
+      {/* Lesson Content */}
+      <div className="max-w-4xl mx-auto px-6 mt-6 ">
+        <h2 className="text-3xl font-semibold text-gray-800 mb-6">
+          {lesson.title}
+        </h2>
+
+        <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <ul className="list-disc list-inside space-y-4 text-lg text-gray-700 leading-relaxed">
+            {lesson.content.map((point, index) => (
+              <li
+                key={index}
+                className="hover:translate-x-1 transition-transform duration-200"
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

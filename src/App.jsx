@@ -14,6 +14,7 @@ import Ai from "./pages/Ai";
 import PrivateRoute from "./components/PrivateRoute";
 import HospitalList from "./pages/HospitalList";
 import VideoGallery from "./pages/VideoGallery";
+import MoodQuiz from "./pages/MoodQuiz";
 
 const App = () => {
   return (
@@ -59,6 +60,8 @@ const App = () => {
         />
         <Route path="/hospitalList" element={<HospitalList />} />
         <Route path="/videoGallery" element={<VideoGallery />} />
+        <Route path="/moodquiz" element={<MoodQuiz />} />
+
         <Route
           path="/categories/:categoryID"
           element={
