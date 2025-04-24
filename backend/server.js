@@ -30,6 +30,7 @@ app.use("/api",profileRoutes);
 app.use("/api",registerRoutes);
 //connecting lessonProgress
 app.use("/api",lessonProgress);
+
 app.use("/api",aiRoute);
 //connecting psyRoutes
 app.use("/api",psyRoutes);

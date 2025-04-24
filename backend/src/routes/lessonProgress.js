@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user"); // 
+const User = require("../models/user"); 
+const { updateStreak } = require("../utils/updateStreak");
+
 
 router.patch("/updateStatus", async (req, res) => {
   const { clerkUserId, lessonId, status } = req.body;
@@ -31,6 +33,10 @@ router.patch("/updateStatus", async (req, res) => {
         status,
         completedAt: status ? new Date() : null,
       });
+    }
+
+    if (status === true) {
+      await updateStreak(user);
     }
 
     await user.save();

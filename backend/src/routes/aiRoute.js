@@ -1,6 +1,6 @@
 const express= require("express")
 const router =express.Router();
-const {getChatInstance} = require ("../gemini/chatBot");
+const {getChatInstance} = require ("../utils/gemini");
 
 router.post('/chat', async (req, res) => {
     try {
