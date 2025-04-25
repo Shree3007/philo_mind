@@ -6,7 +6,7 @@ import { MdLocalFireDepartment } from "react-icons/md";
 import { GiRank3 } from "react-icons/gi";
 import { useUser } from "@clerk/clerk-react";
 import axios from "axios";
-import { Link, Links } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
@@ -32,21 +32,34 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (isSignedIn && user) {
-      axios.post("http://localhost:5000/api/register", {
-        clerkUserId: user.id,
-        email: user.primaryEmailAddress.emailAddress,
-      });
+    const fetchUserData = async () => {
+      if (isSignedIn && user) {
+        try {
+          // Register user
+          await axios.post("http://localhost:5000/api/register", {
+            clerkUserId: user.id,
+            email: user.primaryEmailAddress.emailAddress,
+          });
 
-      axios
-        .get(`http://localhost:5000/api/profile/${user.id}`)
-        .then((res) => {
+          // ✅ Check and update streak
+          await axios.patch("http://localhost:5000/api/checkStreak", {
+            clerkUserId: user.id,
+          });
+
+          // Fetch updated profile
+          const res = await axios.get(
+            `http://localhost:5000/api/profile/${user.id}`
+          );
           setLessonsCompleted(res.data.progress);
           setStreak(res.data.streak);
           setBadges(res.data.badges);
-        })
-        .catch((err) => console.error("Error fetching stats:", err));
-    }
+        } catch (err) {
+          console.error("Error loading user data:", err);
+        }
+      }
+    };
+
+    fetchUserData();
   }, [isSignedIn, user]);
 
   return (
