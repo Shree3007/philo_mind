@@ -8,7 +8,7 @@ const MoodQuizResult = ({ mood, onReset }) => {
   const displayMood = typeof mood === "string" ? mood : JSON.stringify(mood);
 
   return (
-    <div className="flex flex-col items-center justify-center animate-fade-in pb-[100px] pt-[50px] px-4 text-center">
+    <div className="flex flex-col items-center justify-center animate-fade-in   px-4 text-center">
       {/* Glowing Brain Icon */}
       <div className="mb-8">
         <div className="relative">

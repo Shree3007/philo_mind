@@ -90,7 +90,7 @@ const MoodQuiz = () => {
   const showQuestions = mood === null;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b   bg-[#F5F1EA] px-4 py-10">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b   bg-[#F5F1EA] px-4 py-10 pt-[100px] pb-[100px]">
       <Card className="mood-card w-full max-w-2xl rounded-2xl shadow-2xl border border-gray-100">
         <div className="p-6 sm:p-8">
           {!isSubmitting ? (
