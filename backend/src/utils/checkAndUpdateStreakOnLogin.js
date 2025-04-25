@@ -41,4 +41,3 @@ const checkAndUpdateStreakOnLogin = async (user) => {
   };
   
   module.exports = { checkAndUpdateStreakOnLogin };
-  

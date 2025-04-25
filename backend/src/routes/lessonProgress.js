@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require("../models/user"); 
 const { updateStreak } = require("../utils/updateStreak");
 
-
 router.patch("/updateStatus", async (req, res) => {
   const { clerkUserId, lessonId, status } = req.body;
 
@@ -36,11 +35,16 @@ router.patch("/updateStatus", async (req, res) => {
     }
 
     if (status === true) {
-      await updateStreak(user);
+      updateStreak(user); // Apply streak update
     }
 
     await user.save();
-    res.status(200).json({ message: "Lesson status updated successfully" });
+
+    res.status(200).json({
+      message: "Lesson status updated successfully",
+      streak: user.streak // <-- Return streak in response
+    });
+
   } catch (error) {
     console.error("Error updating lesson status:", error);
     res.status(500).json({ message: "Server error", error: error.message });

@@ -16,7 +16,7 @@ const LessonProgressSchema= new mongoose.Schema({
 });
 
 const streakSchema = new mongoose.Schema({
-    count: { type: Number, default: 0 },
+    count: { type: Number, default: 1 },
     lastUpdated: { type: Date, default: null },
   });
 
