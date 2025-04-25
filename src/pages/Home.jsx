@@ -20,6 +20,7 @@ import AfterCard1 from "@/components/AfterCard1";
 import AfterCard2 from "@/components/AfterCard2";
 import Slider from "@/components/Slider";
 import BeforeSlider from "@/components/BeforeSlider";
+import MoodQuiz from "./MoodQuiz";
 
 import hero from "../assets/hero-img.jpeg";
 
@@ -102,7 +103,7 @@ const Home = () => {
 
       {/* Floating Action Button */}
       {isSignedIn && (
-        <Link to="/moodquiz">
+        <Link to="/MoodQuiz">
           <button
             onClick={() => setShowModal(true)}
             className="pb-[100px] fixed bottom-6 right-6 bg-black text-white text-2xl rounded-full p-4 shadow-lg hover:bg-gray-800 transition"

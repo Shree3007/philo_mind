@@ -1,6 +1,9 @@
 const updateStreak = async (user) => {
   const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
-  const lastUpdated = user.streak?.lastUpdated?.split("T")[0];
+
+  const lastUpdated = user.streak?.lastUpdated
+    ? new Date(user.streak.lastUpdated).toISOString().split("T")[0]
+    : null;
 
   if (lastUpdated === today) return;
 

@@ -23,10 +23,13 @@ const analyzeMood = async (userId, answers) => {
       answers,
     });
 
-    return res.data.emotion || "unknown";
+    return {
+      emotion: res.data.emotion || "unknown",
+      categories: res.data.suggestedCategories || [],
+    };
   } catch (error) {
     console.error("❌ Error submitting mood:", error);
-    return "error";
+    return { emotion: "error", categories: [] };
   }
 };
 
@@ -69,15 +72,15 @@ const MoodQuiz = () => {
     }
 
     setIsSubmitting(true);
-    const analyzedMood = await analyzeMood(userId, answers);
+    const moodData = await analyzeMood(userId, answers);
+    console.log("🔥 analyzedMood:", moodData);
 
-    console.log("🔥 analyzedMood:", analyzedMood);
-    setMood(analyzedMood);
+    setMood(moodData);
     setIsSubmitting(false);
 
     toast({
       title: "Mood Analysis Complete",
-      description: `AI detected: ${analyzedMood}`,
+      description: `AI detected: ${moodData.emotion}`,
     });
   };
 
@@ -90,7 +93,7 @@ const MoodQuiz = () => {
   const showQuestions = mood === null;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b   bg-[#F5F1EA] px-4 py-10 pt-[100px] pb-[100px]">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b bg-[#F5F1EA] px-4 py-10 pt-[100px] pb-[100px]">
       <Card className="mood-card w-full max-w-2xl rounded-2xl shadow-2xl border border-gray-100">
         <div className="p-6 sm:p-8">
           {!isSubmitting ? (
