@@ -14,3 +14,5 @@ const updateStreak = async (user) => {
 
   user.streak.lastUpdated = new Date();
 };
+
+module.exports = { updateStreak };
