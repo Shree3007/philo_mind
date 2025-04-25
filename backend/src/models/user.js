@@ -20,22 +20,6 @@ const streakSchema = new mongoose.Schema({
     lastUpdated: { type: Date, default: null },
   });
 
-
-/*const GamificationSchema= new mongoose.Schema({
-    streak:{
-        type:Number,
-        default:0
-    },
-    badges:{
-        type:[String],
-        default:[]
-    },
-    updatedAt:{
-        type:Date,
-        default:Date.now
-    }
-});*/
-
 const UserSchema = new mongoose.Schema({
     clerkUserId:{
         type:String,
@@ -51,10 +35,6 @@ const UserSchema = new mongoose.Schema({
         type:[LessonProgressSchema],
         default:[]
     },
-    /*gamification:{
-        type:GamificationSchema,
-        default:()=>({})
-    }*/
     streak: {
         type: streakSchema,
         default: () => ({}),  
