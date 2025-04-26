@@ -4,13 +4,14 @@ import { useChatStore } from "../store/useChatStore";
 import axios from "axios";
 import { Loader2, CornerUpRight } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import { useStore } from "@/store/useStore";
 
 const Ai = () => {
   const { messages, addMessage } = useChatStore();
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef(null);
-
+  const backendUrl = useStore((state) => state.backendUrl);
   const handleSend = async () => {
     if (!input.trim()) return;
     addMessage({ role: "user", content: input });

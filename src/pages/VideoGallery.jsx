@@ -1,19 +1,17 @@
 // src/components/VideoGallery.jsx
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useStore } from "@/store/useStore";
 const VideoGallery = () => {
   const [videos, setVideos] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
-
+  const backendUrl = useStore((state) => state.backendUrl);
   const fetchVideos = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/videos?page=${page}`
-      );
+      const res = await axios.get(`${backendUrl}/api/videos?page=${page}`);
       setVideos(Array.isArray(res.data.videos) ? res.data.videos : []);
       setTotalPages(res.data.totalPages || 1);
     } catch (err) {

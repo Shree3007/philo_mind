@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useStore } from "@/store/useStore";
 const HospitalList = () => {
   const [hospitals, setHospitals] = useState([]);
   const [city, setCity] = useState(""); // Track selected city
   const [cities, setCities] = useState([]); // Track list of cities
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1); // For pagination
-  const [currentPage, setCurrentPage] = useState(1); // Track current page
+  const [currentPage, setCurrentPage] = useState(1);
+  const backendUrl = useStore((state) => state.backendUrl);
 
   // Fetch hospitals with the selected city filter
   const fetchHospitals = async (page = currentPage) => {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:5000/api/psy?city=${city}&page=${page}`
+        `${backendUrl}/api/psy?city=${city}&page=${page}`
       );
       setHospitals(res.data.hospitals || []);
       setTotalPages(res.data.totalPages); // Set total pages from the backend
@@ -30,7 +31,7 @@ const HospitalList = () => {
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/psy");
+        const res = await axios.get(`${backendUrl}/api/psy`);
         // Extract cities from the fetched hospitals and remove duplicates
         const cityList = [
           ...new Set(res.data.hospitals.map((hospital) => hospital.city)),

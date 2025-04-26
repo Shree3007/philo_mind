@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
+import { useStore } from "@/store/useStore";
 
 const CatLessons = () => {
   const { categoryID } = useParams();
   const navigate = useNavigate();
   const [lessons, setLessons] = useState([]);
   const { user } = useUser();
-
+  const backendUrl = useStore((state) => state.backendUrl);
   useEffect(() => {
     const fetchLessons = async () => {
       try {
         if (!user?.id) return;
 
         const response = await axios.get(
-          `http://localhost:5000/api/lessons/category/${categoryID}?clerkUserId=${user.id}`
+          `${backendUrl}/api/lessons/category/${categoryID}?clerkUserId=${user.id}`
         );
         setLessons(response.data);
       } catch (error) {
@@ -30,7 +31,7 @@ const CatLessons = () => {
     const newStatus = !currentStatus;
 
     try {
-      await axios.patch("http://localhost:5000/api/updateStatus", {
+      await axios.patch(`${backendUrl}/api/updateStatus`, {
         clerkUserId: user.id,
         lessonId,
         status: newStatus,

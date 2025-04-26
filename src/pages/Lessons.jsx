@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
+import { useStore } from "@/store/useStore";
 const Lessons = () => {
   const { lessonID } = useParams();
   const [lesson, setLesson] = useState(null);
+  const backendUrl = useStore((state) => state.backendUrl);
 
   useEffect(() => {
     const fetchLesson = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/lessons/${lessonID}`
+          `${backendUrl}/api/lessons/${lessonID}`
         );
         setLesson(response.data);
       } catch (error) {

@@ -7,6 +7,7 @@ import MoodQuizQuestion from "@/components/MoodQuizQuestion";
 import MoodQuizResult from "@/components/MoodQuizResult";
 import { Brain } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useStore } from "@/store/useStore";
 
 const quizQuestions = [
   "How are you feeling today?",
@@ -16,32 +17,32 @@ const quizQuestions = [
   "What's been on your mind most of the time?",
 ];
 
-const analyzeMood = async (userId, answers) => {
-  try {
-    const res = await axios.post("http://localhost:5000/api/submit-mood", {
-      userId,
-      answers,
-    });
-
-    return {
-      emotion: res.data.emotion || "unknown",
-      categories: res.data.suggestedCategories || [],
-    };
-  } catch (error) {
-    console.error("❌ Error submitting mood:", error);
-    return { emotion: "error", categories: [] };
-  }
-};
-
 const MoodQuiz = () => {
   const { user } = useUser();
   const userId = user?.id;
-
+  const backendUrl = useStore((state) => state.backendUrl);
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState(Array(quizQuestions.length).fill(""));
   const [mood, setMood] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+
+  const analyzeMood = async (userId, answers) => {
+    try {
+      const res = await axios.post(`${backendUrl}/api/submit-mood`, {
+        userId,
+        answers,
+      });
+
+      return {
+        emotion: res.data.emotion || "unknown",
+        categories: res.data.suggestedCategories || [],
+      };
+    } catch (error) {
+      console.error("❌ Error submitting mood:", error);
+      return { emotion: "error", categories: [] };
+    }
+  };
 
   const updateAnswer = (value) => {
     const newAnswers = [...answers];

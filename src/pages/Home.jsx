@@ -21,7 +21,7 @@ import AfterCard2 from "@/components/AfterCard2";
 import Slider from "@/components/Slider";
 import BeforeSlider from "@/components/BeforeSlider";
 import MoodQuiz from "./MoodQuiz";
-
+import { useStore } from "@/store/useStore";
 import hero from "../assets/hero-img.jpeg";
 
 const Home = () => {
@@ -30,26 +30,24 @@ const Home = () => {
   const [streak, setStreak] = useState(null);
   const [badges, setBadges] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const backendUrl = useStore((state) => state.backendUrl);
 
   useEffect(() => {
     const fetchUserData = async () => {
       if (isSignedIn && user) {
         try {
           // Register user
-          await axios.post("http://localhost:5000/api/register", {
+          await axios.post(`${backendUrl}/api/register`, {
             clerkUserId: user.id,
             email: user.primaryEmailAddress.emailAddress,
           });
 
           // ✅ Check and update streak
-          await axios.patch("http://localhost:5000/api/checkStreak", {
+          await axios.patch(`${backendUrl}/api/checkStreak`, {
             clerkUserId: user.id,
           });
-
           // Fetch updated profile
-          const res = await axios.get(
-            `http://localhost:5000/api/profile/${user.id}`
-          );
+          const res = await axios.get(`${backendUrl}/api/profile/${user.id}`);
           setLessonsCompleted(res.data.progress);
           setStreak(res.data.streak);
           setBadges(res.data.badges);

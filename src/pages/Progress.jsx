@@ -2,6 +2,7 @@ import { useUser, useClerk } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { MdLocalFireDepartment } from "react-icons/md";
+import { useStore } from "@/store/useStore";
 
 const Progress = () => {
   const { user } = useUser();
@@ -11,13 +12,14 @@ const Progress = () => {
   const [streak, setStreak] = useState(0);
   const [badges, setBadges] = useState([]);
   const [loading, setLoading] = useState(true);
+  const backendUrl = useStore((state) => state.backendUrl);
 
   useEffect(() => {
     const fetchStats = async () => {
       if (!user?.id) return;
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/profile/${user.id}`
+          `${backendUrl}/api/profile/${user.id}`
         );
         const data = response.data;
 
