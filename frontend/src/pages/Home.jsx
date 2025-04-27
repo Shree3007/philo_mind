@@ -126,10 +126,10 @@ const Home = () => {
           <Link to="/ai">
             <AfterCard2 />
           </Link>
-          <Link to="/hospitalList">
+          <Link to="/videoGallery">
             <AfterCard3 />
           </Link>
-          <Link to="/videoGallery">
+          <Link to="/hospitalList">
             <AfterCard4 />
           </Link>
         </div>
