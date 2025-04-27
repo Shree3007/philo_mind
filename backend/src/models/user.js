@@ -38,9 +38,11 @@ const UserSchema = new mongoose.Schema({
     streak: {
         type: streakSchema,
         default: () => ({}),  
-    }
-              
-
+    },
+    badge: {
+        type: String,
+        default: "No Badge", 
+      },          
 },{timestamps:true});
 
 module.exports = mongoose.model('User', UserSchema);
