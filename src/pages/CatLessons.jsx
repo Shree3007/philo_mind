@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
 import { useStore } from "@/store/useStore";
+import FeedbackForm from "@/components/FeedbackForm";
 
 const CatLessons = () => {
   const { categoryID } = useParams();

@@ -9,7 +9,8 @@ const aiRoute = require("./src/routes/aiRoute");
 const psyRoutes= require("./src/routes/psyRoutes");
 const videos = require("./src/routes/videoRoutes");
 const moodRoutes = require("./src/routes/moodRoutes");
-const checkStreak= require("./src/routes/checkStreak")
+const checkStreak= require("./src/routes/checkStreak");
+const feedbackRoutes = require('./src/routes/feedbackRoutes');
 const cors = require("cors")
 
 dotenv.config();
@@ -41,6 +42,8 @@ app.use("/api",videos)
 app.use("/api", moodRoutes);
 
 app.use("/api",checkStreak);
+
+app.use('/api/feedback', feedbackRoutes);
 
 
 app.listen(process.env.PORT || 5000, '0.0.0.0', () => {
