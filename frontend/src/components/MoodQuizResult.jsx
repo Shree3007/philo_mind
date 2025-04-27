@@ -45,12 +45,14 @@ const MoodQuizResult = ({ mood, onReset }) => {
           </h3>
           <div className="flex flex-wrap justify-center gap-2 mb-6">
             {categories.map((cat, i) => (
-              <span
-                key={i}
-                className="bg-mood-secondary text-white px-3 py-1 rounded-full text-sm shadow"
-              >
-                {cat}
-              </span>
+              <Link to="/categories">
+                <span
+                  key={i}
+                  className="bg-mood-secondary text-white px-3 py-1 rounded-full text-sm shadow"
+                >
+                  {cat}
+                </span>
+              </Link>
             ))}
           </div>
         </>
