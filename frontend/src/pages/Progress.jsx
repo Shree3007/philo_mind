@@ -65,14 +65,14 @@ const Progress = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex justify-center items-center bg-[#F7F6F3]">
+      <div className="min-h-screen flex justify-center items-center bg-[#F5F1EA]">
         <p className="text-gray-600 text-lg font-medium">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#F7F6F3] px-6 font-[Outfit] flex justify-center items-start pt-[110px] pb-[100px]">
+    <div className="min-h-screen bg-[#F5F1EA] px-6 font-[Outfit] flex justify-center items-start pt-[110px] pb-[100px]">
       <div className="w-full max-w-md bg-white shadow-2xl rounded-3xl p-8 animate-fade-in">
         <div className="text-center space-y-6">
           <img
