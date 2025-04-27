@@ -6,7 +6,7 @@ import { MdLocalFireDepartment } from "react-icons/md";
 import { GiRank3 } from "react-icons/gi";
 import { useUser } from "@clerk/clerk-react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,8 @@ import HomeCard4 from "@/components/HomeCard4";
 import ImageSlider from "@/components/ImageSlider";
 import AfterCard1 from "@/components/AfterCard1";
 import AfterCard2 from "@/components/AfterCard2";
+import AfterCard3 from "@/components/AfterCard3";
+import AfterCard4 from "@/components/AfterCard4";
 import Slider from "@/components/Slider";
 import BeforeSlider from "@/components/BeforeSlider";
 import MoodQuiz from "./MoodQuiz";
@@ -109,7 +111,9 @@ const Home = () => {
             <img src={hero} className="w-full" alt="hero" />
           </div>
           <div className="h-20 flex justify-center bg-[#eee8e7]">
-            <Button size="lg">Start Learning</Button>
+            <Link to="/login">
+              <Button size="lg">Start Learning</Button>
+            </Link>
           </div>
         </div>
       )}
@@ -121,6 +125,12 @@ const Home = () => {
           </Link>
           <Link to="/ai">
             <AfterCard2 />
+          </Link>
+          <Link to="/hospitalList">
+            <AfterCard3 />
+          </Link>
+          <Link to="/videoGallery">
+            <AfterCard4 />
           </Link>
         </div>
       ) : (
@@ -172,12 +182,21 @@ const Home = () => {
         </p>
         <BsDiscord className="h-[100px] w-[100px]" />
         <p>Become part of our community</p>
-        <Button
-          className="p-5 mt-5"
-          onClick={() => window.open("https://discord.gg/8ZPR57XfcG", "_blank")}
-        >
-          Join Discord
-        </Button>
+
+        {isSignedIn ? (
+          <Button
+            className="p-5 mt-5"
+            onClick={() =>
+              window.open("https://discord.gg/8ZPR57XfcG", "_blank")
+            }
+          >
+            Join Discord
+          </Button>
+        ) : (
+          <Link to="/login">
+            <Button className="p-5 mt-5">Join Discord</Button>
+          </Link>
+        )}
       </div>
 
       <div className="mt-10 text-center">

@@ -58,7 +58,7 @@ const HospitalList = () => {
   return (
     <div className="min-h-screen bg-[#F5F1EA] font-[Outfit] p-4 pt-[100px] pb-[120px]">
       <h2 className="text-2xl font-semibold text-center mb-6">
-        Find a Psychological Hospital
+        Psychiatrists near you
       </h2>
 
       <select

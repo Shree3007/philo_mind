@@ -16,10 +16,12 @@ import HospitalList from "./pages/HospitalList";
 import VideoGallery from "./pages/VideoGallery";
 import MoodQuiz from "./pages/MoodQuiz";
 import Quiz from "./pages/Quiz";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const App = () => {
   return (
     <div>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

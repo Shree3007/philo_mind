@@ -108,7 +108,7 @@ const CatLessons = () => {
                 </label>
               </div>
               <p className="text-sm text-gray-500">
-                {lesson.status ? "Marked as complete" : "Incomplete"}
+                {lesson.status ? "Marked as complete" : "Not started yet"}
               </p>
             </div>
           ))}
