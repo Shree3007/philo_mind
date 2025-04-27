@@ -69,9 +69,30 @@ const App = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/hospitalList" element={<HospitalList />} />
-        <Route path="/videoGallery" element={<VideoGallery />} />
-        <Route path="/moodquiz" element={<MoodQuiz />} />
+        <Route
+          path="/hospitalList"
+          element={
+            <PrivateRoute>
+              <HospitalList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/videoGallery"
+          element={
+            <PrivateRoute>
+              <VideoGallery />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/moodquiz"
+          element={
+            <PrivateRoute>
+              <MoodQuiz />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="/categories/:categoryID"
