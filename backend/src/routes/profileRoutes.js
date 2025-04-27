@@ -19,7 +19,7 @@ router.get("/profile/:clerkUserId", async (req, res) => {
         clerkUserId: user.clerkUserId,
         progress: completedlessons,
         streak: user.streak?.count || 0,
-        badges: [], // no badges in schema now
+        badge: user.badge || "No Badge"
       });
     } catch (error) {
       res.status(500).json({ message: "Error fetching profile", error });
