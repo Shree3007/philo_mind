@@ -43,7 +43,7 @@ app.use("/api", moodRoutes);
 
 app.use("/api",checkStreak);
 
-app.use('/api/feedback', feedbackRoutes);
+app.use("/api",feedbackRoutes);
 
 
 app.listen(process.env.PORT || 5000, '0.0.0.0', () => {

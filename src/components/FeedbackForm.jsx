@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useParams } from "react-router-dom"; // 👈 important
 import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
+import { useStore } from "@/store/useStore";
 
-const FeedbackForm = () => {
+const FeedbackForm = ({ categoryId }) => {
+  const backendUrl = useStore((state) => state.backendUrl);
   const { user } = useUser();
-  const { categoryId } = useParams(); // 👈 fetch from URL params
 
   const [feedbackText, setFeedbackText] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
@@ -13,8 +14,13 @@ const FeedbackForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!categoryId) {
+      setStatus("Error: No categoryId found.");
+      return;
+    }
     try {
-      await axios.post("/api/feedback/submit-feedback", {
+      await axios.post(`${backendUrl}/api/submit-feedback`, {
         clerkUserId: user.id,
         categoryId,
         feedbackText,

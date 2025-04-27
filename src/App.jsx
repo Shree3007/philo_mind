@@ -15,6 +15,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import HospitalList from "./pages/HospitalList";
 import VideoGallery from "./pages/VideoGallery";
 import MoodQuiz from "./pages/MoodQuiz";
+import Quiz from "./pages/Quiz";
 
 const App = () => {
   return (
@@ -52,6 +53,14 @@ const App = () => {
         />
         <Route
           path="/ai"
+          element={
+            <PrivateRoute>
+              <Quiz />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/chat-ai"
           element={
             <PrivateRoute>
               <Ai />

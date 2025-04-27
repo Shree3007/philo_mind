@@ -61,7 +61,7 @@ const MoodQuizResult = ({ mood, onReset }) => {
             personalized help!
           </p>
           <Link
-            to="/ai"
+            to="/chat-ai"
             className="inline-flex items-center bg-mood-primary text-black px-6 py-2 text-base rounded-md hover:bg-mood-primary/90 transition-colors shadow"
           >
             <Bot size={18} className="mr-2" />

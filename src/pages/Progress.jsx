@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { MdLocalFireDepartment } from "react-icons/md";
 import { useStore } from "@/store/useStore";
+import { TbBadgeFilled } from "react-icons/tb";
 
 const Progress = () => {
   const { user } = useUser();
@@ -10,7 +11,7 @@ const Progress = () => {
 
   const [lessonsCompleted, setLessonsCompleted] = useState(0);
   const [streak, setStreak] = useState(0);
-  const [badges, setBadges] = useState([]);
+  const [badges, setBadges] = useState("");
   const [loading, setLoading] = useState(true);
   const backendUrl = useStore((state) => state.backendUrl);
 
@@ -27,7 +28,7 @@ const Progress = () => {
           typeof data.progress === "number" ? data.progress : 0
         );
         setStreak(typeof data.streak === "number" ? data.streak : 0);
-        setBadges(Array.isArray(data.badges) ? data.badges : []);
+        setBadges(data.badge);
       } catch (error) {
         console.error("Error fetching stats:", error);
       } finally {
@@ -42,6 +43,24 @@ const Progress = () => {
     signOut(() => {
       window.location.href = "/";
     });
+  };
+
+  // 🌟 New: Badge Color Mapping
+  const getBadgeColor = (badgeName) => {
+    switch (badgeName) {
+      case "Bronze Explorer":
+        return "text-[#CD7F32]"; // bronze color
+      case "Silver Seeker":
+        return "text-[#C0C0C0]"; // silver color
+      case "Gold Philosopher":
+        return "text-[#FFD700]"; // gold color
+      case "Platinum Sage":
+        return "text-[#E5E4E2]"; // platinum color
+      case "Diamond Enlightened":
+        return "text-[#B9F2FF]"; // diamond color
+      default:
+        return "text-black"; // no badge
+    }
   };
 
   if (loading) {
@@ -88,23 +107,16 @@ const Progress = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-[#2B2B2B] mb-2">
-              Badges
-            </h3>
-            {badges.length > 0 ? (
-              <div className="flex flex-wrap justify-center gap-2">
-                {badges.map((badge, index) => (
-                  <span
-                    key={index}
-                    className="bg-[#E8E6DF] text-sm text-[#2B2B2B] px-3 py-1 rounded-full shadow-sm"
-                  >
-                    {badge}
-                  </span>
-                ))}
+            <h3 className="text-lg font-semibold text-[#2B2B2B] mb-2">Badge</h3>
+
+            <div className="flex flex-wrap justify-center gap-2">
+              <div className="flex gap-2 bg-[#E8E6DF] text-lg text-[#2B2B2B] px-6 py-3 rounded-full shadow-sm">
+                <TbBadgeFilled
+                  className={`text-[30px] ${getBadgeColor(badges)}`}
+                />
+                <span>{badges}</span>
               </div>
-            ) : (
-              <p className="text-sm text-gray-500 italic">No badges yet</p>
-            )}
+            </div>
           </div>
 
           <button

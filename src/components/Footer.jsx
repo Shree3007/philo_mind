@@ -3,9 +3,10 @@ import { FaHome, FaBook, FaInfoCircle, FaEnvelope } from "react-icons/fa";
 import { useUser, UserButton } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 import { GiProgression } from "react-icons/gi";
+import { IoPersonCircleSharp } from "react-icons/io5";
 
 export default function Footer() {
-  const { isSignedIn } = useUser();
+  const { isSignedIn, user } = useUser();
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white shadow-[0_-6px_16px_rgba(0,0,0,0.3)] flex justify-around items-center p-4 z-50">
       {/* Home Icon */}
@@ -47,11 +48,15 @@ export default function Footer() {
       {isSignedIn ? (
         <Link to="/progress">
           <div className="flex flex-col items-center cursor-pointer">
-            <UserButton
-              appearance={{
-                elements: { avatarBox: "w-7  h-7" },
-              }}
-            />
+            {user?.imageUrl ? (
+              <img
+                src={user.imageUrl}
+                alt="Profile"
+                className="w-7 h-7 rounded-full object-cover "
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-gray-300" />
+            )}
             <p className="text-sm">Profile</p>
           </div>
         </Link>

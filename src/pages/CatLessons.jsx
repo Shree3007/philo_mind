@@ -114,6 +114,7 @@ const CatLessons = () => {
           ))}
         </div>
       </div>
+      <FeedbackForm categoryId={categoryID} />
     </div>
   );
 };

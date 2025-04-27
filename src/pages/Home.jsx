@@ -24,11 +24,13 @@ import MoodQuiz from "./MoodQuiz";
 import { useStore } from "@/store/useStore";
 import hero from "../assets/hero-img.jpeg";
 
+import { TbBadgeFilled } from "react-icons/tb";
+
 const Home = () => {
   const { isSignedIn, user } = useUser();
   const [lessonsCompleted, setLessonsCompleted] = useState(null);
   const [streak, setStreak] = useState(null);
-  const [badges, setBadges] = useState([]);
+  const [badges, setBadges] = useState("");
   const [showModal, setShowModal] = useState(false);
   const backendUrl = useStore((state) => state.backendUrl);
 
@@ -54,11 +56,35 @@ const Home = () => {
         } catch (err) {
           console.error("Error loading user data:", err);
         }
+
+        const response = await axios.get(
+          `${backendUrl}/api/profile/${user.id}`
+        );
+        const data = response.data;
+        setBadges(data.badge);
       }
     };
 
     fetchUserData();
   }, [isSignedIn, user]);
+
+  // 🌟 New: Badge Color Mapping
+  const getBadgeColor = (badgeName) => {
+    switch (badgeName) {
+      case "Bronze Explorer":
+        return "text-[#CD7F32]"; // bronze color
+      case "Silver Seeker":
+        return "text-[#C0C0C0]"; // silver color
+      case "Gold Philosopher":
+        return "text-[#FFD700]"; // gold color
+      case "Platinum Sage":
+        return "text-[#E5E4E2]"; // platinum color
+      case "Diamond Enlightened":
+        return "text-[#B9F2FF]"; // diamond color
+      default:
+        return "text-black"; // no badge
+    }
+  };
 
   return (
     <div className="bg-[#F5F1EA] pb-[100px] font-[Outfit] relative">
@@ -70,7 +96,7 @@ const Home = () => {
               <p>{streak}</p>
               <MdLocalFireDepartment className="text-2xl text-orange-400" />
             </div>
-            <GiRank3 className="text-2xl font-bold" />
+            <TbBadgeFilled className={`text-[30px] ${getBadgeColor(badges)}`} />
           </div>
         </div>
       )}
@@ -111,18 +137,6 @@ const Home = () => {
       )}
 
       {isSignedIn ? <Slider /> : <BeforeSlider />}
-
-      {/* Floating Action Button */}
-      {isSignedIn && (
-        <Link to="/MoodQuiz">
-          <button
-            onClick={() => setShowModal(true)}
-            className="pb-[100px] fixed bottom-6 right-6 bg-black text-white text-2xl rounded-full p-4 shadow-lg hover:bg-gray-800 transition"
-          >
-            🧠
-          </button>
-        </Link>
-      )}
 
       {/* Animated Modal */}
       <AnimatePresence>
