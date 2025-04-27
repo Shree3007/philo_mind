@@ -11,6 +11,7 @@ const videos = require("./src/routes/videoRoutes");
 const moodRoutes = require("./src/routes/moodRoutes");
 const checkStreak= require("./src/routes/checkStreak");
 const feedbackRoutes = require('./src/routes/feedbackRoutes');
+const psyCityRoutes = require("./src/routes/psyCityRoutes");
 const cors = require("cors")
 
 dotenv.config();
@@ -35,7 +36,9 @@ app.use("/api",lessonProgress);
 
 app.use("/api",aiRoute);
 //connecting psyRoutes
+
 app.use("/api",psyRoutes);
+app.use("/api", psyCityRoutes); 
 //videoroute
 app.use("/api",videos)
 
