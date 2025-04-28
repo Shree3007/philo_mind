@@ -44,16 +44,9 @@ const MoodQuizResult = ({ mood, onReset }) => {
             Suggested Lesson Categories:
           </h3>
           <div className="flex flex-wrap justify-center gap-2 mb-6">
-            {categories.map((cat, i) => (
-              <Link to="/categories">
-                <span
-                  key={i}
-                  className="bg-mood-secondary text-white px-3 py-1 rounded-full text-sm shadow"
-                >
-                  Go to Lessons
-                </span>
-              </Link>
-            ))}
+            <Link to="/categories">
+              <Button>Go to Lessons</Button>
+            </Link>
           </div>
         </>
       ) : (

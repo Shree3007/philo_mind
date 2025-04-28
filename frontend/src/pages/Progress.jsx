@@ -55,9 +55,9 @@ const Progress = () => {
       case "Gold Philosopher":
         return "text-[#FFD700]"; // gold color
       case "Platinum Sage":
-        return "text-[#E5E4E2]"; // platinum color
+        return "text-[#18bfed]"; // platinum color
       case "Diamond Enlightened":
-        return "text-[#B9F2FF]"; // diamond color
+        return "text-[#af3feb]"; // diamond color
       default:
         return "text-black"; // no badge
     }
