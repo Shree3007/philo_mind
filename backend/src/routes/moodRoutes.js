@@ -43,7 +43,7 @@ router.post("/submit-mood", async (req, res) => {
       stressed: ["Stress Management", "Relaxation Techniques"],
       tired: ["Energy Boost", "Self-Care"],
       anxious: ["Calmness", "Mindfulness"],
-      overwhelmed: ["Stress Management", "Mindfulness"],
+      overwhelmed: ["Stress Management", "Mindfulness","Time Management"],
       lonely: ["Connection", "Self-Reflection"],
       motivated: ["Goal Setting", "Personal Growth"],
       // Add more mappings as needed...
