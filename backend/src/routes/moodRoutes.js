@@ -38,7 +38,7 @@ router.post("/submit-mood", async (req, res) => {
 
     // Define the emotion to category mapping
     const emotionToCategories = {
-      happy: ["Happiness", "Mindfulness"],
+      happy: ["Happiness", "Mindfulness","joyful","optimistic"],
       sad: ["Emotional Balance", "Self-Reflection"],
       stressed: ["Stress Management", "Relaxation Techniques"],
       tired: ["Energy Boost", "Self-Care"],
