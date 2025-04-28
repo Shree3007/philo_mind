@@ -50,11 +50,10 @@ router.post("/submit-mood", async (req, res) => {
     };
 
     // Default to "Emotional Balance" if no emotion match is found
-    const categories = emotionToCategories[emotion] || ["Emotional Balance"];
+    const categories = emotionToCategories[emotion];
 
     // Fetch category documents from the LessonCategory collection
     const categoryDocs = await LessonCategory.find({ name: { $in: categories } });
-
     // Get the names of the matched categories
     const categoryNames = categoryDocs.map(cat => cat.name);
 

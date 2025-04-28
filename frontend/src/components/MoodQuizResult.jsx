@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Brain, RotateCcw, Bot } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -50,7 +50,7 @@ const MoodQuizResult = ({ mood, onReset }) => {
                   key={i}
                   className="bg-mood-secondary text-white px-3 py-1 rounded-full text-sm shadow"
                 >
-                  {cat}
+                  Go to Lessons
                 </span>
               </Link>
             ))}
