@@ -32,7 +32,32 @@ export default defineConfig({
         ],
       },
       workbox: {
-        runtimeCaching: [], // no offline caching
+        runtimeCaching: [{
+          urlPattern: ({ request }) => request.destination === 'document' || request.destination === 'script' || request.destination === 'style' || request.destination === 'image' || request.destination === 'font',
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'static-assets',
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 60 * 60 * 24 * 30, // 30 Days
+            },
+          },
+        },
+        {
+          urlPattern: ({ url }) => url.pathname.startsWith('/api'),
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'api-cache',
+            networkTimeoutSeconds: 10,
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 60 * 60 * 24, // 1 Day
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },], // no offline caching
       },
     }),
   ],
