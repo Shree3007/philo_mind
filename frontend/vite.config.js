@@ -3,13 +3,13 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       devOptions: {
-        enabled: true,
+        enabled: false, // ✅ disable service worker in dev mode
       },
       manifest: {
         name: 'Philo Mind',
@@ -32,38 +32,41 @@ export default defineConfig({
         ],
       },
       workbox: {
-        runtimeCaching: [{
-          urlPattern: ({ request }) => request.destination === 'document' || request.destination === 'script' || request.destination === 'style' || request.destination === 'image' || request.destination === 'font',
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'static-assets',
-            expiration: {
-              maxEntries: 100,
-              maxAgeSeconds: 60 * 60 * 24 * 30, // 30 Days
+        runtimeCaching: [
+          {
+            urlPattern: ({ request }) =>
+              ['document', 'script', 'style', 'image', 'font'].includes(request.destination),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'static-assets',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+              },
             },
           },
-        },
-        {
-          urlPattern: ({ url }) => url.pathname.startsWith('/api'),
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'api-cache',
-            networkTimeoutSeconds: 10,
-            expiration: {
-              maxEntries: 50,
-              maxAgeSeconds: 60 * 60 * 24, // 1 Day
-            },
-            cacheableResponse: {
-              statuses: [0, 200],
+          {
+            urlPattern: ({ url }) => url.pathname.startsWith('/api'),
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api-cache',
+              networkTimeoutSeconds: 10,
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24, // 1 day
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
             },
           },
-        },], // no offline caching
+        ],
       },
     }),
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'), // 👈 maps @ to /src
+      '@': path.resolve(__dirname, 'src'),
     },
   },
-});
+}));
